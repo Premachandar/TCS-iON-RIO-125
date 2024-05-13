@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+h2 {
+    color: white;
+    font-size: 40;
+    line-height: 0.0;
+}
+form {
+    background-color: #ffffffa4;
+    padding: 50px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+}
+input[type=text], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+}
+input[type=submit] {
+    background-color: #4CAF50;
+    color: rgb(255, 255, 255);
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+</style>
+</head>
+<body>
+
+<h2>Hotel Customer Satisfaction Survey</h2>
+
+<form action="/submit_survey" method="post">
+  <label for="name">Name:</label><br>
+  <input type="text" id="name" name="name"><br>
+  <label for="stay_duration">Stay Duration (in days):</label><br>
+  <select id="stay_duration" name="stay_duration">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+  </select><br>
+  <label for="booking_method">Booking Method:</label><br>
+  <select id="booking_method" name="booking_method">
+    <option value="online">Online</option>
+    <option value="phone">Phone</option>
+    <option value="inperson">Inperson</option>
+  </select><br>
+  <label for="room_satisfaction">Room Satisfaction (1-5):</label><br>
+  <select id="room_satisfaction" name="room_satisfaction">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+  </select><br>
+  <label for="service_satisfaction">Service Satisfaction (1-5):</label><br>
+  <select id="service_satisfaction" name="service_satisfaction">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+  </select><br>
+  <label for="comments">Comments:</label><br>
+  <textarea id="comments" name="comments"></textarea><br>
+  <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>

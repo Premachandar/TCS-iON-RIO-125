@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        .chart-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center my-4">Dashboard</h1>
+        <div class="row">
+            <div class="col-lg-6">
+                <h2>Responses</h2>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Stay Duration</th>
+                            <th>Booking Method</th>
+                            <th>Room Satisfaction</th>
+                            <th>Service Satisfaction</th>
+                            <th>Comments</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                        <!-- Data from the server will be inserted here -->
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-6">
+                <div class="chart-container">
+                    <h2>Room Satisfaction</h2>
+                    <canvas id="roomSatisfactionChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h2>Service Satisfaction</h2>
+                    <canvas id="serviceSatisfactionChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h2>Booking Method</h2>
+                    <canvas id="bookingMethodChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h2>Stay Duration</h2>
+                    <canvas id="stayDurationChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+    fetch('/data')
+        .then(response => response.json())
+        .then(data => {
+            // Update the table with the fetched data
+            var tableBody = document.getElementById('tableBody');
+            data.forEach(row => {
+                var tr = document.createElement('tr');
+                row.forEach(cell => {
+                    var td = document.createElement('td');
+                    td.textContent = cell;
+                    tr.appendChild(td);
+                });
+                tableBody.appendChild(tr);
+            });
+
+        });
+    </script>
+</body>
+</html>
